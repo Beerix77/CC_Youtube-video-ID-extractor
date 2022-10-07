@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,15 +6,19 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner keyboard = new Scanner(System.in);
         //String url = keyboard.nextLine();
 
-        String test = "https://youtu.be/RRW2aUSw5vU";
-        String test2 = "https://www.youtube.com/watch?v=kbxkq_w51PM";
+        // URL strings for testing
+        //String url = "https://youtu.be/RRW2aUSw5vU";
+        String url = "https://www.youtube.com/watch?v=kbxkq_w51PM";
 
-        String[] splitUrl = test2.split("");
-        System.out.println(Arrays.toString(splitUrl));
+        // split url string into an array
+        String[] splitUrl = url.split("");
+        //System.out.println(Arrays.toString(splitUrl));
 
+        // locate index of final slash within URL address in array
         int index = 0;
         int slashCount = 0;
         for (int i = 0; slashCount < 3; i++){
@@ -24,33 +28,29 @@ public class Main {
             index = i;
         }
 
-        System.out.println("Index of final slash: " + index);
+        //System.out.println("Index of final slash: " + index);
 
-        // START HERE BELOW:
-        // Regex for 'youtu.be' pattern, ID is located immediately following 3rd slash
-
-        //boolean shortURL = false;
+        // Check for 'youtu.be' keyword as a match means video ID is located immediately following 3rd '/'.
         Pattern dotPattern = Pattern.compile("youtu.be");
-        Matcher searchURL = dotPattern.matcher(test2);
+        Matcher searchURL = dotPattern.matcher(url);
         boolean matchFound = searchURL.find();
         if(matchFound) {
-            System.out.println("Match found");
-            //shortURL = true;
+            //System.out.println("Match found");
             for (int i = ++index; i <= splitUrl.length-1; i++){
                 System.out.print(splitUrl[i]);
             }
 
+        /* if 'youtu.be' keyword not found then assume URL is written as full address hence search
+         for index of '=' as video ID immediately follows it. Print all chars following '='.
+         */
 
         } else {
-            System.out.println("Match not found");
-            System.out.println(test2.indexOf("="));
-
+            //System.out.println("Match not found");
+            //System.out.println(url.indexOf("="));
+            int equalsIndex = url.indexOf("=");
+            for (int i = ++equalsIndex; i <= splitUrl.length-1; i++){
+                System.out.print(splitUrl[i]);
+            }
         }
     }
 }
-/* redo:
--do test for '=' in array
-if yes then do index of '='
-do test for 'youtu.be'
-
- */
