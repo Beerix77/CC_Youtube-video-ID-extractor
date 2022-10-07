@@ -18,7 +18,7 @@ public class Main {
         String[] splitUrl = url.split("");
         //System.out.println(Arrays.toString(splitUrl));
 
-        // locate index of final slash within URL address in array
+        // locate index of final slash (ie 3rd one) within URL address in array
         int index = 0;
         int slashCount = 0;
         for (int i = 0; slashCount < 3; i++) {
