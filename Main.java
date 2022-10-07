@@ -39,7 +39,7 @@ public class Main {
 
         //System.out.println("Index of final slash: " + index);
 
-        // Check for 'youtu.be' keyword as a match means video ID is located immediately following 3rd '/'.
+        // Check for 'youtu.be' keyword since a match will indicate that video ID is located immediately following 3rd '/'.
         Pattern dotPattern = Pattern.compile("youtu.be");
         Matcher searchURL = dotPattern.matcher(url);
         boolean matchFound = searchURL.find();
