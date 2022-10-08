@@ -28,15 +28,6 @@ public class Main {
             index = i;
         }
 
-
-        // ***** MODIFY BELOW USING 'StringBuilder' *****
-        /*
-        StringBuilder buildID = new StringBuilder();
-        for (int i = 0; i < 100; i++)
-            myString.append(...blah...);
-        String s = myString.toString();
-        */
-
         //System.out.println("Index of final slash: " + index);
 
         // Check for 'youtu.be' keyword since a match will indicate that video ID is located immediately following 3rd '/'.
